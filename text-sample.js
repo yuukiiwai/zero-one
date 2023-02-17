@@ -1,9 +1,3 @@
-const maxStringLength = 32;
-
-const reset = '\u001b[0m';
-const red = '\u001b[31m';
-const yellow = '\u001b[33m'
-
 const kengai = [
     [
         "　　　　　　　　　　　　　　　　　　　　　　　　　　　　　",
@@ -211,24 +205,6 @@ const kengai = [
     ]
 ]
 
-const upper = [
-    "   "+red+"▲             ▲",
-    "  ▲▼▲           ▲▼▲",
-    yellow+" ▲▼"+reset+"△"+yellow+"▼▲         ▲▼"+reset+"△"+yellow+"▼▲",
-    "▲"+reset+"▽   ▽"+yellow+"▲       ▲"+reset+"▽   ▽"+yellow+"▲",
-    reset+"     △"+yellow+"▼"+red+"▲     ▲"+yellow+"▼"+reset+"△",
-    yellow+"  ▲"+reset+"▽"+yellow+"▲▼"+red+"▲▼▲   ▲▼▲"+yellow+"▼▲"+reset+"▽"+yellow+"▲",
-    reset+" ▲"+red+"▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼"+reset+"▲",
-    reset+"▲▼▲"+red+"▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼"+reset+"▲▼▲",
-    "    ▼▲▼ ▼▲▼ ▼▲▼ ▼▲▼",
-    "     ▼   ▼   ▼   ▼"]
-
-const lower = [
-    "         ▲   ▲",
-    "        ▲▼▲ ▲▼▲",
-    "    ▼▲▼"+red+"▲▼▲▼▲▼▲▼▲"+reset+"▼▲▼",
-    "     ▼"+red+"▲▼▲▼▲▼▲▼▲▼▲"+reset+"▼"]
-
 let rl = require('readline');
 let os = require('os');
 
@@ -243,7 +219,7 @@ let sizes = [
     kengai[0][0].length + kengai[1][0].length + kengai[2][0].length + kengai[3][0].length + kengai[4][0].length,
 ]
 
-const kengaiInt = setInterval(()=>{
+setInterval(()=>{
     for(let letter = 0; letter < kengai.length; letter++){
         for(let c = 0; c < kengai[letter][0].length; c++){
             let x = c + sizes[letter] - loop;
@@ -254,36 +230,15 @@ const kengaiInt = setInterval(()=>{
             }
         }
     }
+
     loop++;
 },50)
 
-setTimeout(()=>{
-    clearInterval(kengaiInt);
-},7*1000)
 
-let uplow = true;
-let movie;
 
-console.clear();
-
-setTimeout(()=>{
-    movie = setInterval(()=>{
-        console.clear();
-        for(let i = 0; i < upper.length ; i++){
-            rl.cursorTo(process.stdout,process.stdout.getWindowSize()[0]/2-maxStringLength/2,(uplow ? 0 : 1)+i+10);
-            process.stdout.write(upper[i]);
-        }
-    
-        for(let i = 0; i < lower.length ; i++){
-            rl.cursorTo(process.stdout,process.stdout.getWindowSize()[0]/2-maxStringLength/2,12+i+10);
-            process.stdout.write(lower[i]);
-        }
-        uplow = !uplow;
-    },100);
-},7*1000)
-
-setTimeout(()=>{
-    clearInterval(movie)
-    console.clear();
-    console.log("logout PB01");
-},15*1000);
+//console.log(kengai[0].length);
+//console.log(kengai[1].length);
+//console.log(kengai[2].length);
+//console.log(kengai[3].length);
+//console.log(kengai[4].length);
+//console.log(kengai[5].length);
